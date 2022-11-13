@@ -17,7 +17,8 @@ namespace SaleWebAspNet.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Salles Web App";
+            ViewData["Student"] = "Eclipse";
 
             return View();
         }
