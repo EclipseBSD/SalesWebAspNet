@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SaleWebAspNet.Data;
 using SaleWebAspNet.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace SaleWebAspNet.Services
 {
@@ -29,10 +30,10 @@ namespace SaleWebAspNet.Services
             _context.SaveChanges();
         }
 
-        //Retorna o id do vendedor com o parâmetro em específico.
+        //Retorna o id do vendedor e o departamento com o parâmetro em específico.
         public Seller FindById(int id)
         {
-            return _context.Seller.FirstOrDefault(obj => obj.Id == id);
+            return _context.Seller.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id);
         }
 
         //Remove o id do vendedor atráves de um id especificado.
