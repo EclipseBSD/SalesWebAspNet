@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using SaleWebAspNet.Data;
 using SaleWebAspNet.Models;
 using Microsoft.EntityFrameworkCore;
+using SaleWebAspNet.Services.Exceptions;
 
 namespace SaleWebAspNet.Services
 {
@@ -42,6 +43,25 @@ namespace SaleWebAspNet.Services
             var obj = _context.Seller.Find(id);
             _context.Seller.Remove(obj);
             _context.SaveChanges();
+        }
+
+        //Implementação para atualizar o objeto do Seller caso bate com o parâmetro do método.
+        //Se passar por um if ele vai jogar uma exceção.
+        public void Update(Seller obj)
+        {
+            if (!_context.Seller.Any(x => x.Id == obj.Id))
+            {
+                throw new NotFoundException("Id not found");
+            }
+            try
+            {
+                _context.Update(obj);
+                _context.SaveChanges();
+            }
+            catch(DbUpdateConcurrencyException e)
+            {
+                throw new DbConcurrencyException(e.Message);
+            }
         }
 
     }
