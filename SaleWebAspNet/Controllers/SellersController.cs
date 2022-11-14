@@ -45,5 +45,32 @@ namespace SaleWebAspNet.Controllers
             _sellerService.Insert(seller);
             return RedirectToAction(nameof(Index));
         }
+
+        //Cria uma ação de Delete para verificar se há um id do objeto ou não.
+        //Retornando um erro e caso encontre ele mostrará o objeto na tela.
+        public IActionResult Delete(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var obj = _sellerService.FindById(id.Value);
+            if(obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        //Validação com o método post para deletar o id de um vendedor.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            _sellerService.Remove(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

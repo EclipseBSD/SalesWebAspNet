@@ -28,5 +28,20 @@ namespace SaleWebAspNet.Services
             _context.Add(obj);
             _context.SaveChanges();
         }
+
+        //Retorna o id do vendedor com o parâmetro em específico.
+        public Seller FindById(int id)
+        {
+            return _context.Seller.FirstOrDefault(obj => obj.Id == id);
+        }
+
+        //Remove o id do vendedor atráves de um id especificado.
+        public void Remove(int id)
+        {
+            var obj = _context.Seller.Find(id);
+            _context.Seller.Remove(obj);
+            _context.SaveChanges();
+        }
+
     }
 }
