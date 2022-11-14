@@ -21,5 +21,12 @@ namespace SaleWebAspNet.Services
         {
             return _context.Seller.ToList();
         }
+
+        //Implementação para adicionar um novo objeto no banco de dados e salvando as alterações.
+        public void Insert(Seller obj)
+        {
+            _context.Add(obj);
+            _context.SaveChanges();
+        }
     }
 }
