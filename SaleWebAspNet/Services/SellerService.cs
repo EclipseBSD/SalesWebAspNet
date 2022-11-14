@@ -25,7 +25,6 @@ namespace SaleWebAspNet.Services
         //Implementação para adicionar um novo objeto no banco de dados e salvando as alterações.
         public void Insert(Seller obj)
         {
-            obj.Department = _context.Department.First();
             _context.Add(obj);
             _context.SaveChanges();
         }
