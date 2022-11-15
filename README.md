@@ -6,3 +6,14 @@ It's a website make it by ASP.NET technology with goal to show a sales record wi
 
 # Screenshots
 
+<p>Departments</p>
+
+<img src="https://github.com/EclipseBSD/SalesWebAspNet/blob/main/screenshots/departments.png" style="width: 640px; heigh: 480px">
+
+<p>Sellers</p>
+
+<img src="https://github.com/EclipseBSD/SalesWebAspNet/blob/main/screenshots/sellers.png" style="width: 640px; heigh: 480px">
+
+<p>Sales record</p>
+
+<img src="https://github.com/EclipseBSD/SalesWebAspNet/blob/main/screenshots/sales-record.png" style="width: 640px; heigh: 480px">
