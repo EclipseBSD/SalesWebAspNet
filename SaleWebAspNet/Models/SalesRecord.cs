@@ -1,4 +1,5 @@
-﻿using SaleWebAspNet.Models.Enums;
+﻿using SaleWebAspNet.Models;
+using SaleWebAspNet.Models.Enums;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,9 +8,12 @@ namespace SaleWebAspNet.Models
     public class SalesRecord
     {
         public int Id { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Date { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:F2}")]
         public double Amount { get; set; }
-        [Display(Name = "Status")]
         public SaleStatus Sales { get; set; }
         public Seller Seller { get; set; }
 
@@ -17,12 +21,12 @@ namespace SaleWebAspNet.Models
         {
         }
 
-        public SalesRecord(int id, DateTime date, double amount, SaleStatus sales, Seller seller)
+        public SalesRecord(int id, DateTime date, double amount, SaleStatus status, Seller seller)
         {
             Id = id;
             Date = date;
             Amount = amount;
-            Sales = sales;
+            Sales = status;
             Seller = seller;
         }
     }
