@@ -41,9 +41,17 @@ namespace SaleWebAspNet.Services
         //Remove o id do vendedor atráves de um id especificado.
         public async Task RemoveAsync(int id)
         {
-            var obj = await _context.Seller.FindAsync(id);
-            _context.Seller.Remove(obj);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var obj = await _context.Seller.FindAsync(id);
+                _context.Seller.Remove(obj);
+                await _context.SaveChangesAsync();
+            }
+            catch(DbUpdateException)
+            {
+                throw new IntegrityException("Can't delete seller because he/she has sales");
+            }
+            
         }
 
         //Implementação para atualizar o objeto do Seller caso bate com o parâmetro do método.
