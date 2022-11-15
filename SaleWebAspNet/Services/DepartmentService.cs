@@ -1,7 +1,10 @@
-﻿using System.Linq;
-using System.Collections.Generic;
-using SaleWebAspNet.Data;
+﻿using SaleWebAspNet.Data;
 using SaleWebAspNet.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace SaleWebAspNet.Services
 {
@@ -15,9 +18,10 @@ namespace SaleWebAspNet.Services
         }
 
         //Implementação que retorna a lista de departamentos ordenadamente.
-        public List<Department> FindAll()
+        //Utilizando o objeto Task transformando em uma lista assíncrona.
+        public async Task<List<Department>> FindAllAsync()
         {
-            return _context.Department.OrderBy(x => x.Name).ToList();
+            return await _context.Department.OrderBy(x => x.Name).ToListAsync();
         }
 
     }
