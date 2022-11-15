@@ -1,5 +1,6 @@
 ﻿using SaleWebAspNet.Models.Enums;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SaleWebAspNet.Models
 {
@@ -8,6 +9,7 @@ namespace SaleWebAspNet.Models
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public double Amount { get; set; }
+        [Display(Name = "Status")]
         public SaleStatus Sales { get; set; }
         public Seller Seller { get; set; }
 
