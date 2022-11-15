@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace SaleWebAspNet.Models
@@ -8,10 +9,18 @@ namespace SaleWebAspNet.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+        [Display(Name = "Birth Date")] //Atributo para definir o que vai ser mostrado na aplicação
+        [DataType(DataType.Date)] //Atributo para definir o tipo de data na view
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")] //Formatando data para formato brasileiro
         public DateTime BirthDate { get; set; }
+        [Display(Name = "Base Salary")]
+        [DisplayFormat(DataFormatString = "{0:F2}")] //Formatação do atributo com duas casa decimais
         public double BaseSalary { get; set; }
         public Department Department { get; set; }
+        [Display(Name = "Department")]
         public int DepartmentId { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>(); //Associação com ICollection
 
